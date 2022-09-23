@@ -1,18 +1,18 @@
 import React from 'react';
 
-const SearchStatus = ({ users }) => {
+const SearchStatus = ({ length }) => {
   const renderPhrase = (num) => {
     return num >= 2 && num <= 4 ? 'человека тусанут' : 'человек тусанет';
   };
 
   return (
     <>
-      {users.length <= 0 ? (
+      {length <= 0 ? (
         <span className='badge bg-danger'>Никто с тобой не тусанет</span>
       ) : (
         <>
           <span className='badge bg-primary'>
-            {users.length} {renderPhrase(users.length)} с тобой сегодня
+            {length} {renderPhrase(length)} с тобой сегодня
           </span>
         </>
       )}

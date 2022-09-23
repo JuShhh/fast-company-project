@@ -1,13 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const Bookmark = () => {
-  let [status, setStatus] = useState(false);
-  const handleClick = () => {
-    setStatus(!status);
-  };
+const Bookmark = ({status, ...rest}) => {
+
 
   return (
-    <button onClick={() => handleClick()}>
+    <button {...rest}>
       {status ? (
         <i class="bi bi-bookmark-star-fill"></i>
       ) : (

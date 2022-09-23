@@ -2,33 +2,38 @@ import React from 'react';
 import Qualitie from './qualitie';
 import BookMark from './bookmark';
 
-const User = ({ users, setUsers }) => {
-  const handleDelete = (userId) => {
-    setUsers((prevState) => prevState.filter((user) => user._id !== userId));
-  };
-
-  return users.map((user) => (
-    <tr key={user._id}>
-      <td>{user.name}</td>
+const User = ({
+  _id,
+  name,
+  profession,
+  qualities,
+  completedMeetings,
+  rate,
+  bookmark,
+  onDelete,
+  onToggleBookmark,
+}) => {
+  return (
+    <tr key={_id}>
+      <td>{name}</td>
       <td>
-        <Qualitie user={user} />
+        {qualities.map((q) => (
+          <Qualitie key={q._id} {...q} />
+        ))}
       </td>
-      <td>{user.profession.name}</td>
-      <td>{user.completedMeetings}</td>
-      <td>{user.rate} / 5</td>
+      <td>{profession.name}</td>
+      <td>{completedMeetings}</td>
+      <td>{rate} / 5</td>
       <td>
-        <BookMark user={user} />
+        <BookMark status={bookmark} onClick={() => onToggleBookmark(_id)} />
       </td>
       <td>
-        <button
-          className='btn btn-danger'
-          onClick={() => handleDelete(user._id)}
-        >
+        <button className='btn btn-danger' onClick={() => onDelete(_id)}>
           delete
         </button>
       </td>
     </tr>
-  ));
+  );
 };
 
 export default User;
