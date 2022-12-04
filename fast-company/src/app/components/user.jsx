@@ -1,6 +1,6 @@
 import React from "react";
-import Qualitie from "./qualitie";
-import BookMark from "./bookmark";
+import Qualities from "./qualities";
+import Bookmark from "./bookmark";
 import PropTypes from "prop-types";
 
 const User = ({
@@ -18,15 +18,15 @@ const User = ({
         <tr key={_id}>
             <td>{name}</td>
             <td>
-                {qualities.map((q) => (
-                    <Qualitie key={q._id} {...q} />
+                {qualities.map((qual) => (
+                    <Qualities key={qual._id} {...qual} />
                 ))}
             </td>
             <td>{profession.name}</td>
             <td>{completedMeetings}</td>
             <td>{rate} / 5</td>
             <td>
-                <BookMark
+                <Bookmark
                     status={bookmark}
                     onClick={() => onToggleBookmark(_id)}
                 />
@@ -36,7 +36,7 @@ const User = ({
                     className="btn btn-danger"
                     onClick={() => onDelete(_id)}
                 >
-                    delete
+                    Удалить
                 </button>
             </td>
         </tr>
@@ -47,10 +47,10 @@ User.propTypes = {
     _id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     profession: PropTypes.object.isRequired,
-    qualities: PropTypes.array.isRequired,
+    qualities: PropTypes.array,
     completedMeetings: PropTypes.number.isRequired,
     rate: PropTypes.number.isRequired,
-    bookmark: PropTypes.bool.isRequired,
+    bookmark: PropTypes.bool,
     onDelete: PropTypes.func.isRequired,
     onToggleBookmark: PropTypes.func.isRequired
 };

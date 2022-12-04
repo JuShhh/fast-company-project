@@ -8,25 +8,21 @@ const SearchStatus = ({ length }) => {
 
     return (
         <>
-            {length <= 0
-                ? (
-                    <span className="badge bg-danger">
+            {length <= 0 ? (
+                <span className="badge bg-danger">
                     Никто с тобой не тусанет
-                    </span>
-                )
-                : (
-                    <>
-                        <span className="badge bg-primary">
-                            {length} {renderPhrase(length)} с тобой сегодня
-                        </span>
-                    </>
-                )}
+                </span>
+            ) : (
+                <span className="badge bg-primary">
+                    {length} {renderPhrase(length)} с тобой сегодня
+                </span>
+            )}
         </>
     );
 };
 
 SearchStatus.propTypes = {
-    length: PropTypes.number.isRequired
+    length: PropTypes.number
 };
 
 export default SearchStatus;
